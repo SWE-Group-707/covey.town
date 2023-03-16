@@ -16,12 +16,12 @@ const scopes = [
   "playlist-read-collaborative",
 ];
 
-export const getTokenFromResponse = () => {
+export const getTokenFromResponse = (): Record<string, string> => {
   return window.location.hash
     .substring(1)
     .split("&")
-    .reduce((initial, item) => {
-      var parts = item.split("=");
+    .reduce((initial: Record<string, string>, item: string) => {
+      const parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
 
       return initial;
